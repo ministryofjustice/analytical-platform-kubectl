@@ -5,10 +5,10 @@ containerRunOptions:
   user: "nonroot"
 
 commandTests:
-  - name: "ubuntu"
+  - name: "alpine"
     command: "grep"
-    args: ["DISTRIB_RELEASE", "/etc/lsb-release"]
-    expectedOutput: ["DISTRIB_RELEASE=22.04"]
+    args: ["VERSION_ID", "/etc/os-release"]
+    expectedOutput: ["VERSION_ID=3.19.1"]
 
   - name: "whoami"
     command: "whoami"
@@ -16,10 +16,10 @@ commandTests:
 
   - name: "user"
     command: "id"
-    args: ["--user", "nonroot"]
+    args: ["-u", "nonroot"]
     expectedOutput: ["10000"]
 
   - name: "groups"
     command: "id"
-    args: ["--groups", "nonroot"]
+    args: ["-g", "nonroot"]
     expectedOutput: ["10000"]
