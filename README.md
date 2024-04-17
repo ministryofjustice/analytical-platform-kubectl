@@ -4,4 +4,47 @@
 
 This repository is managed in Terraform [here](https://github.com/ministryofjustice/data-platform-github-access/blob/main/terraform/github/analytical-platform-repositories.tf).
 
-The source did not have a README.
+This repository contains the GitHub Kubectl container image for use in the Analytical Platform.
+
+## Running Locally
+
+### Build
+
+```bash
+docker build --platform linux/amd64 --file Dockerfile --tag analytical-platform.service.justice.gov.uk/kubectl:local .
+```
+
+### Run
+
+```bash
+docker run -it --rm \
+  --platform linux/amd64 \
+  --name analytical-platform-actions-runner \
+  --env GITHUB_TOKEN="XXX" \
+  --env GITHUB_REPOSITORY="ministryofjustice/analytical-platform" \
+  --env RUNNER_LABELS="YYY"
+  analytical-platform.service.justice.gov.uk/actions-runner:local
+```
+## Versions
+
+### Alpine
+
+Generally Dependabot does this, but the following command will return the digest:
+
+```bash
+docker pull --platform linux/amd64 docker.io/alpine:3.19.1
+
+docker image inspect --format='{{index .RepoDigests 0}}' docker.io/alpine:3.19.1
+```
+
+### APT Packages
+
+To find latest APT package versions, you can run the following:
+
+```bash
+docker run -it --rm --platform linux/amd64 docker.io/alpine:3.19.1
+
+apk update
+
+apk policy ${PACKAGE} # for example curl, git or gpg
+```
