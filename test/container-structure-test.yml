@@ -2,24 +2,24 @@
 schemaVersion: 2.0.0
 
 containerRunOptions:
-  user: "analyticalplatform"
+  user: "nonroot"
 
 commandTests:
-  - name: "ubuntu"
+  - name: "alpine"
     command: "grep"
-    args: ["DISTRIB_RELEASE", "/etc/lsb-release"]
-    expectedOutput: ["DISTRIB_RELEASE=22.04"]
+    args: ["VERSION_ID", "/etc/os-release"]
+    expectedOutput: ["VERSION_ID=3.19.1"]
 
   - name: "whoami"
     command: "whoami"
-    expectedOutput: ["analyticalplatform"]
+    expectedOutput: ["nonroot"]
 
   - name: "user"
     command: "id"
-    args: ["--user", "analyticalplatform"]
-    expectedOutput: ["1000"]
+    args: ["-u", "nonroot"]
+    expectedOutput: ["10000"]
 
   - name: "groups"
     command: "id"
-    args: ["--groups", "analyticalplatform"]
-    expectedOutput: ["100"]
+    args: ["-g", "nonroot"]
+    expectedOutput: ["10000"]

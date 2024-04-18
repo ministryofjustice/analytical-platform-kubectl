@@ -1,49 +1,38 @@
 # checkov:skip=CKV_DOCKER_2:Healthcheck instructions have not been added to container images
-# This image is an example base image for this template and can be replaced to fit user needs
-FROM public.ecr.aws/ubuntu/ubuntu@sha256:12fb86d81bc4504d8261a91c83c54b9e5dcdf1d833ba0fe42ec9e0ee09a2b0ba
+FROM docker.io/alpine:3.19.1
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
-      org.opencontainers.image.authors="Analytical Platform (analytical-platform@digital.justice.gov.uk)"\
-      org.opencontainers.image.title="{image title}" \
-      org.opencontainers.image.description="{decription}" \
-      org.opencontainers.image.url="{your repo url}"
+      org.opencontainers.image.authors="Analytical Platform" \
+      org.opencontainers.image.title="kubectl Image" \
+      org.opencontainers.image.description="kubectl image for Analytical Platform" \
+      org.opencontainers.image.url="https://github.com/ministryofjustice/analytical-platform-kubectl"
 
-ENV CONTAINER_USER="analyticalplatform" \
-    CONTAINER_UID="1000" \
-    CONTAINER_GROUP="analyticalplatform" \
-    CONTAINER_GID="1000" \
-    DEBIAN_FRONTEND="noninteractive"
+ARG KUBECTL_VERSION="v1.28.4"
 
-SHELL ["/bin/bash", "-e", "-u", "-o", "pipefail", "-c"]
+ENV CONTAINER_GID="10000" \
+    CONTAINER_GROUP="nonroot" \
+    CONTAINER_UID="10000" \
+    CONTAINER_USER="nonroot" \
+    CONTAINER_HOME="/app"
 
-# User
-RUN <<EOF
-groupadd \
-  --gid ${CONTAINER_GID} \
-  ${CONTAINER_GROUP}
-
-useradd \
-  --uid ${CONTAINER_UID} \
-  --gid ${CONTAINER_GROUP} \
-  --create-home \
-  --shell /bin/bash \
-  ${CONTAINER_USER}
-EOF
-
-# Base
-RUN <<EOF
-apt-get update --yes
-
-apt-get install --yes \
-  "apt-transport-https=2.4.12" \
-  "curl=7.81.0-1ubuntu1.16"
-
-apt-get clean --yes
-
-rm --force --recursive /var/lib/apt/lists/*
-EOF
+RUN addgroup \
+      --gid ${CONTAINER_GID} \
+      --system \
+      ${CONTAINER_GROUP} \
+    && adduser \
+      --uid ${CONTAINER_UID} \
+      --ingroup ${CONTAINER_GROUP} \
+      --disabled-password \
+      ${CONTAINER_USER} \
+    && mkdir --parents ${CONTAINER_HOME} \
+    && chown --recursive ${CONTAINER_USER}:${CONTAINER_GROUP} ${CONTAINER_HOME} \
+    && apk add --no-cache --virtual build \
+      curl==8.5.0-r0 \
+    && curl --location "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
+      --output /usr/local/bin/kubectl \
+    && chmod +x /usr/local/bin/kubectl \
+    && apk del build
 
 USER ${CONTAINER_USER}
 
-WORKDIR /home/${CONTAINER_USER}
-
+WORKDIR ${CONTAINER_HOME}
