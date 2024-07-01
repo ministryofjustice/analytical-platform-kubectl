@@ -8,7 +8,7 @@ commandTests:
   - name: "alpine"
     command: "grep"
     args: ["VERSION_ID", "/etc/os-release"]
-    expectedOutput: ["VERSION_ID=3.20.0"]
+    expectedOutput: ["VERSION_ID=3.20.1"]
 
   - name: "whoami"
     command: "whoami"
