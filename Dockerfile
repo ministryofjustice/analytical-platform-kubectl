@@ -1,5 +1,5 @@
 # checkov:skip=CKV_DOCKER_2:Healthcheck instructions have not been added to container images
-FROM docker.io/alpine:3.20.0
+FROM docker.io/alpine:3.20.1
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform" \
@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.description="kubectl image for Analytical Platform" \
       org.opencontainers.image.url="https://github.com/ministryofjustice/analytical-platform-kubectl"
 
-ARG KUBECTL_VERSION="v1.28.10"
+ARG KUBECTL_VERSION="v1.29.6"
 
 ENV CONTAINER_GID="10000" \
     CONTAINER_GROUP="nonroot" \
@@ -27,7 +27,7 @@ RUN addgroup \
     && mkdir --parents ${CONTAINER_HOME} \
     && chown --recursive ${CONTAINER_USER}:${CONTAINER_GROUP} ${CONTAINER_HOME} \
     && apk add --no-cache --virtual build \
-      curl==8.7.1-r0 \
+      curl==8.8.0-r0 \
     && curl --location "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
       --output /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl \
