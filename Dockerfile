@@ -27,7 +27,7 @@ RUN addgroup \
     && mkdir --parents ${CONTAINER_HOME} \
     && chown --recursive ${CONTAINER_USER}:${CONTAINER_GROUP} ${CONTAINER_HOME} \
     && apk add --no-cache --virtual build \
-      curl==8.8.0-r0 \
+      curl==8.9.0-r0 \
     && curl --location "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
       --output /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl \
