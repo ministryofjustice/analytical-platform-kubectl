@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Image
         id: build_image
-        uses: docker/build-push-action@5176d81f87c23d6fc96624dfdbcd9f3830bbe445 # v6.5.0
+        uses: docker/build-push-action@5cd11c3a4ced054e52742c5fd54dca954e0edd85 # v6.7.0
         with:
           push: false
           load: true
@@ -42,7 +42,7 @@ jobs:
       - name: Upload SARIF
         if: always()
         id: upload_sarif
-        uses: github/codeql-action/upload-sarif@2d790406f505036ef40ecba973cc774a50395aac # v3.25.13
+        uses: github/codeql-action/upload-sarif@eb055d739abdc2e8de2e5f4ba1a8b246daa779aa # v3.26.0
         with:
           sarif_file: trivy-results.sarif
 
