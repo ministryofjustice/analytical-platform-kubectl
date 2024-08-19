@@ -22,6 +22,7 @@ docker run -it --rm \
   --name analytical-platform-actions-runner \
   analytical-platform.service.justice.gov.uk/actions-runner:local
 ```
+
 ## Versions
 
 ### Alpine
