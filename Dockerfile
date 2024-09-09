@@ -1,5 +1,5 @@
 # checkov:skip=CKV_DOCKER_2:Healthcheck instructions have not been added to container images
-FROM docker.io/alpine:3.20.2
+FROM docker.io/alpine:3.20.3
 
 LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.authors="Analytical Platform" \
