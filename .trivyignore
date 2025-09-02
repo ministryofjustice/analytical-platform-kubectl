@@ -1,0 +1,3 @@
+# dockerfile
+# HEALTHCHECK instructions have not been added to container images as per dockefile
+AVD-DS-0026
