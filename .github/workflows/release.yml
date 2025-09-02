@@ -46,7 +46,7 @@ jobs:
         id: sign
         shell: bash
         run: |
-          cosign sign --yes ghcr.io/${{ github.repository }}@${STEPS_BUILD_AND_PUSH_OUTPUTS_DIGEST}
+          cosign sign --yes "ghcr.io/${{ github.repository }}@${STEPS_BUILD_AND_PUSH_OUTPUTS_DIGEST}"
         env:
           STEPS_BUILD_AND_PUSH_OUTPUTS_DIGEST: ${{ steps.build_and_push.outputs.digest }}
 
@@ -56,6 +56,6 @@ jobs:
           cosign verify \
             --certificate-oidc-issuer="https://token.actions.githubusercontent.com" \
             --certificate-identity="https://github.com/${{ github.repository }}/.github/workflows/release.yml@refs/tags/${GITHUB_REF_NAME}" \
-            ghcr.io/${{ github.repository }}@${STEPS_BUILD_AND_PUSH_OUTPUTS_DIGEST}
+            "ghcr.io/${{ github.repository }}@${STEPS_BUILD_AND_PUSH_OUTPUTS_DIGEST}"
         env:
           STEPS_BUILD_AND_PUSH_OUTPUTS_DIGEST: ${{ steps.build_and_push.outputs.digest }}
