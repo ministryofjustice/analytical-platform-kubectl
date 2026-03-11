@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.description="kubectl image for Analytical Platform" \
       org.opencontainers.image.url="https://github.com/ministryofjustice/analytical-platform-kubectl"
 
-ARG KUBECTL_VERSION="v1.29.15"
+ARG KUBECTL_VERSION="v1.32.13"
 
 ENV CONTAINER_GID="10000" \
     CONTAINER_GROUP="nonroot" \
@@ -27,7 +27,7 @@ RUN addgroup \
     && mkdir --parents ${CONTAINER_HOME} \
     && chown --recursive ${CONTAINER_USER}:${CONTAINER_GROUP} ${CONTAINER_HOME} \
     && apk add --no-cache --virtual build \
-      curl==8.14.1-r2 \
+      curl==8.17.0-r1 \
     && curl --location "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" \
       --output /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl \
