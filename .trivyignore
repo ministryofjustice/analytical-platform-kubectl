@@ -1,3 +1,6 @@
 # dockerfile
 # HEALTHCHECK instructions have not been added to container images as per dockerfile
 AVD-DS-0026
+
+# zlib: Arbitrary code execution via buffer overflow in untgz utility (alpine 3.23.3, fixed in zlib 1.3.2-r0, no current version above for alpine)
+CVE-2026-22184
