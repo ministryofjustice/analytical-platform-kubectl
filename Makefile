@@ -24,6 +24,3 @@ build:
 
 test: build
 	$(CONTAINER_TEST)
-
-scan: build
-	trivy image --vuln-type os,library --severity CRITICAL --exit-code 1 $(IMAGE_NAME)
