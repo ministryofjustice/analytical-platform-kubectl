@@ -30,9 +30,9 @@ docker run -it --rm \
 Generally Dependabot does this, but the following command will return the digest:
 
 ```bash
-docker pull --platform linux/amd64 docker.io/alpine:3.23.4
+docker pull --platform linux/amd64 docker.io/alpine:3.24.1
 
-docker image inspect --format='{{index .RepoDigests 0}}' docker.io/alpine:3.23.4
+docker image inspect --format='{{index .RepoDigests 0}}' docker.io/alpine:3.24.1
 ```
 
 ### APT Packages
@@ -40,7 +40,7 @@ docker image inspect --format='{{index .RepoDigests 0}}' docker.io/alpine:3.23.4
 To find latest APT package versions, you can run the following:
 
 ```bash
-docker run -it --rm --platform linux/amd64 docker.io/alpine:3.23.4
+docker run -it --rm --platform linux/amd64 docker.io/alpine:3.24.1
 
 apk update
 
