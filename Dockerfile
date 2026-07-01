@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.vendor="Ministry of Justice" \
       org.opencontainers.image.description="kubectl image for Analytical Platform" \
       org.opencontainers.image.url="https://github.com/ministryofjustice/analytical-platform-kubectl"
 
-ARG KUBECTL_VERSION="v1.35.5"
+ARG KUBECTL_VERSION="v1.36.1"
 
 ENV CONTAINER_GID="10000" \
     CONTAINER_GROUP="nonroot" \
