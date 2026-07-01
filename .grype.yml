@@ -1,0 +1,10 @@
+---
+# Grype configuration file for container vulnerability scanning
+# https://github.com/anchore/grype#configuration
+
+ignore:
+  - vulnerability: GO-2026-5026
+    reason: "Bundled in upstream kubectl binary; repository is pinned to latest available kubectl patch release."
+
+  - vulnerability: GO-2026-4918
+    reason: "Bundled in upstream kubectl binary; repository is pinned to latest available kubectl patch release."
