@@ -14,3 +14,80 @@ ignore:
 
   - vulnerability: GO-2026-5970
     reason: "Bundled in upstream kubectl binary; repository is pinned to latest available kubectl patch release."
+
+  - vulnerability: CVE-2026-33818
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: GO-2026-5972
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: CVE-2026-56853
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: CVE-2026-56859
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: CVE-2026-56862
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: GO-2026-6088
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: GO-2026-6089
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: GO-2026-6090
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: CVE-2026-46600
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: CVE-2026-56864
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
+
+  - vulnerability: CVE-2026-56865
+    package:
+      name: stdlib
+      version: go1.26.5
+      type: go-module
+    reason: "Bundled in upstream kubectl v1.36.x binary; the fixed upstream binary requires a kubectl minor-version upgrade."
